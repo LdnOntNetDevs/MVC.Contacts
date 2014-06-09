@@ -1,0 +1,19 @@
+﻿@{
+    var editMode = false;
+    var redirectUrl = ViewData["redirectUrl"].ToString();
+    
+    if(redirectUrl.Contains("/Edit/"))
+    {
+        editMode = true;
+    }
+}
+<div>
+    @if (editMode)
+    {
+        @Html.ActionLink("Back to List", "Edit", "Contacts", new { id = Request["ContactId"] }, new { @class = "btn btn-primary" })
+    }
+    else
+    {
+        @Html.ActionLink("Back to List", "Details", "Contacts", new { id = Request["ContactId"] }, new { @class = "btn btn-primary" })
+    }
+</div>

@@ -6,8 +6,8 @@
 
 <h2>Details</h2>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ContactId }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ContactId }, new { @class = "btn btn-primary" }) |
+    @Html.ActionLink("Back to List", "Index",null, new { @class = "btn btn-primary" })
 </p>
 <div>
     <h4>Contact</h4>
@@ -77,12 +77,12 @@
 <div>
     <h4>Contact Phones</h4>
     <hr />
-    @Html.ActionLink("Create New", "Create", "ContactPhones", new { ContactId = Model.ContactId },null)
+    @Html.ActionLink("Create New", "Create", "ContactPhones", new { ContactId = Model.ContactId }, new { @class = "btn btn-primary" })
     <hr/>
     @Html.Partial("_ContactPhone", Model.PhoneNumbers)
 </div>
 <div>
-@Html.ActionLink("Back to List", "Index")
+@Html.ActionLink("Back to List", "Index", null,new { @class = "btn btn-primary" })
 </div>
 
 

@@ -248,6 +248,7 @@
     <Content Include="Views\ContactPhones\Edit.cshtml" />
     <Content Include="Views\Shared\_ContactPhone.cshtml" />
     <Content Include="Views\Contacts\Index.cshtml" />
+    <Content Include="Views\ContactPhones\_navigateBack.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

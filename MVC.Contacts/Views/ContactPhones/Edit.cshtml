@@ -6,8 +6,12 @@
 
 <h2>Edit</h2>
 
+@{
+    var _redirectUrl = HttpContext.Current.Request.UrlReferrer.OriginalString;
+}
 
-@using (Html.BeginForm(new { RedirectUrl = HttpContext.Current.Request.UrlReferrer.OriginalString }))
+
+@using (Html.BeginForm(new { RedirectUrl = _redirectUrl }))
 {
     @Html.AntiForgeryToken()
 
@@ -35,21 +39,14 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+                <input type="submit" value="Save" class="btn btn-success" />
             </div>
         </div>
     </div>
 }
 
 <div>
-    @if (HttpContext.Current.Request.UrlReferrer.OriginalString.Contains("/Edit/"))
-    {
-    @Html.ActionLink("Back to List", "Edit", "Contacts", new { id = Model.ContactId }, null)
-    }
-    else
-    {
-    @Html.ActionLink("Back to List", "Details", "Contacts", new { id = Model.ContactId }, null)
-    }
+@Html.Partial("_navigateBack", new ViewDataDictionary { { "redirectUrl", _redirectUrl } })
 </div>
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
