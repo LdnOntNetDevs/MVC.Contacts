@@ -1,4 +1,4 @@
-﻿@model MVC.Contacts.Models.Contact
+﻿@model Contact
 
 @{
     ViewBag.Title = "Edit";
@@ -71,11 +71,22 @@
             </div>
         </div>
 
+        @Html.HiddenFor(model => model.ContactId)
+
+
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Save" class="btn btn-default" />
             </div>
         </div>
+    </div>
+
+    <div>
+        <h4>Contact Phones</h4>
+        <hr />
+        @Html.ActionLink("Create New", "Create", "ContactPhones", new { ContactId = Model.ContactId }, null)
+        <hr />
+        @Html.Partial("_ContactPhone", Model.PhoneNumbers)
     </div>
 }
 

@@ -1,0 +1,33 @@
+﻿@model IEnumerable<ContactPhone>
+
+<div>
+    <table>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.PhoneNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Type)
+            </th>
+            <th></th>
+        </tr>
+     @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.PhoneNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Type)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", "ContactPhones", new { id = item.ContactPhoneId }, null)
+                @Html.ActionLink("Delete", "Delete", "ContactPhones", new { id = item.ContactPhoneId }, null)
+            </td>
+        </tr>
+    }
+
+    </table>
+    
+</div>
+

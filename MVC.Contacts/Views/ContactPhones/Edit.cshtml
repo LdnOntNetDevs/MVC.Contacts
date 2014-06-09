@@ -1,4 +1,4 @@
-﻿@model MVC.Contacts.Models.ContactPhone
+﻿@model ContactPhone
 
 @{
     ViewBag.Title = "Edit";
@@ -7,12 +7,12 @@
 <h2>Edit</h2>
 
 
-@using (Html.BeginForm())
+@using (Html.BeginForm(new { RedirectUrl = HttpContext.Current.Request.UrlReferrer.OriginalString }))
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
-        <h4>ContactPhone</h4>
+        <h4>Contact Phone</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
@@ -30,6 +30,8 @@
                 @Html.ValidationMessageFor(model => model.Type, "", new { @class = "text-danger" })
             </div>
         </div>
+        @Html.HiddenFor(model => model.ContactPhoneId)
+        @Html.HiddenFor(model => model.ContactId)
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
@@ -40,9 +42,15 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @if (HttpContext.Current.Request.UrlReferrer.OriginalString.Contains("/Edit/"))
+    {
+    @Html.ActionLink("Back to List", "Edit", "Contacts", new { id = Model.ContactId }, null)
+    }
+    else
+    {
+    @Html.ActionLink("Back to List", "Details", "Contacts", new { id = Model.ContactId }, null)
+    }
 </div>
-
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }

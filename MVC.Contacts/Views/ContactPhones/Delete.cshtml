@@ -1,4 +1,4 @@
-﻿@model MVC.Contacts.Models.ContactPhone
+﻿@model ContactPhone
 
 @{
     ViewBag.Title = "Delete";
@@ -8,7 +8,7 @@
 
 <h3>Are you sure you want to delete this?</h3>
 <div>
-    <h4>ContactPhone</h4>
+    <h4>Contact Phone</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -29,12 +29,19 @@
 
     </dl>
 
-    @using (Html.BeginForm()) {
+    @using (Html.BeginForm(new { RedirectUrl = HttpContext.Current.Request.UrlReferrer.OriginalString })) {
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
             <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
+            @if (HttpContext.Current.Request.UrlReferrer.OriginalString.Contains("/Edit/"))
+            {
+                @Html.ActionLink("Back to List", "Edit", "Contacts", new { id = Model.ContactId }, null)
+            }
+            else
+            {
+                @Html.ActionLink("Back to List", "Details", "Contacts", new { id = Model.ContactId }, null)
+            }
         </div>
     }
 </div>
