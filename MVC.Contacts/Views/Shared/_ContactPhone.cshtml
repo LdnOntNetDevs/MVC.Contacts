@@ -21,8 +21,8 @@
                 @Html.DisplayFor(modelItem => item.Type)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", "ContactPhones", new { id = item.ContactPhoneId }, null)
-                @Html.ActionLink("Delete", "Delete", "ContactPhones", new { id = item.ContactPhoneId }, null)
+                @Html.ActionLink("Edit", "Edit", "ContactPhones", new { id = item.ContactPhoneId,ContactId = item.ContactId }, new { @class = "btn btn-primary" })
+                @Html.ActionLink("Delete", "Delete", "ContactPhones", new { id = item.ContactPhoneId,ContactId = item.ContactId }, new { @class = "btn btn-primary" })
             </td>
         </tr>
     }
