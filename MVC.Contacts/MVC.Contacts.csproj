@@ -186,6 +186,8 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Images\dotNETdev_logo_150x150.png" />
+    <Content Include="Content\Images\dotNETdev_logo_300x300.png" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -205,7 +207,9 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -239,12 +243,11 @@
     <Content Include="Views\Contacts\Delete.cshtml" />
     <Content Include="Views\Contacts\Details.cshtml" />
     <Content Include="Views\Contacts\Edit.cshtml" />
-    <Content Include="Views\Contacts\Index.cshtml" />
     <Content Include="Views\ContactPhones\Create.cshtml" />
     <Content Include="Views\ContactPhones\Delete.cshtml" />
-    <Content Include="Views\ContactPhones\Details.cshtml" />
     <Content Include="Views\ContactPhones\Edit.cshtml" />
-    <Content Include="Views\ContactPhones\Index.cshtml" />
+    <Content Include="Views\Shared\_ContactPhone.cshtml" />
+    <Content Include="Views\Contacts\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -279,7 +282,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>7413</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:7250/</IISUrl>
+          <IISUrl>http://localhost:7413/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

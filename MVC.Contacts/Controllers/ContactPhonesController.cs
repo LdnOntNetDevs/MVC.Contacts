@@ -37,7 +37,7 @@ namespace MVC.Contacts.Controllers
         }
 
         // GET: ContactPhones/Create
-        public ActionResult Create()
+        public ActionResult Create(int ContactId)
         {
             return View();
         }
@@ -47,13 +47,13 @@ namespace MVC.Contacts.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "ContactPhoneId,PhoneNumber,Type,ContactId")] ContactPhone contactPhone)
+        public async Task<ActionResult> Create([Bind(Include = "ContactPhoneId,PhoneNumber,Type,ContactId")] ContactPhone contactPhone,string RedirectUrl)
         {
             if (ModelState.IsValid)
             {
                 db.ContactPhones.Add(contactPhone);
                 await db.SaveChangesAsync();
-                return RedirectToAction("Index");
+                return Redirect(RedirectUrl);
             }
 
             return View(contactPhone);
@@ -79,13 +79,13 @@ namespace MVC.Contacts.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "ContactPhoneId,PhoneNumber,Type,ContactId")] ContactPhone contactPhone)
+        public async Task<ActionResult> Edit([Bind(Include = "ContactPhoneId,PhoneNumber,Type,ContactId")] ContactPhone contactPhone, string RedirectUrl)
         {
             if (ModelState.IsValid)
             {
                 db.Entry(contactPhone).State = EntityState.Modified;
                 await db.SaveChangesAsync();
-                return RedirectToAction("Index");
+                return Redirect(RedirectUrl);
             }
             return View(contactPhone);
         }
@@ -108,12 +108,12 @@ namespace MVC.Contacts.Controllers
         // POST: ContactPhones/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> DeleteConfirmed(int id)
+        public async Task<ActionResult> DeleteConfirmed(int id,string RedirectUrl)
         {
             ContactPhone contactPhone = await db.ContactPhones.FindAsync(id);
             db.ContactPhones.Remove(contactPhone);
             await db.SaveChangesAsync();
-            return RedirectToAction("Index");
+            return Redirect(RedirectUrl);
         }
 
         protected override void Dispose(bool disposing)

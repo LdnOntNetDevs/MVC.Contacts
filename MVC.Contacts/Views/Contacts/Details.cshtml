@@ -1,11 +1,14 @@
-﻿@model MVC.Contacts.Models.Contact
+﻿@model Contact
 
 @{
     ViewBag.Title = "Details";
 }
 
 <h2>Details</h2>
-
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ContactId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
 <div>
     <h4>Contact</h4>
     <hr />
@@ -68,7 +71,18 @@
 
     </dl>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ContactId }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+
+
+
+<div>
+    <h4>Contact Phones</h4>
+    <hr />
+    @Html.ActionLink("Create New", "Create", "ContactPhones", new { ContactId = Model.ContactId },null)
+    <hr/>
+    @Html.Partial("_ContactPhone", Model.PhoneNumbers)
+</div>
+<div>
+@Html.ActionLink("Back to List", "Index")
+</div>
+
+
