@@ -72,6 +72,22 @@ namespace MVC.Contacts.Migrations
 
                     }
                 );
+
+            for (int i = 0; i < 1000; i++)
+            {
+                context.Contacts.AddOrUpdate(r => r.Name,
+                    new Contact
+                    {
+                        Name = i.ToString(),
+                        Address = "123 Sesame Street",
+                        City = "Nowhere",
+                        Email = string.Concat(i.ToString(), "@internet.com"),
+                        State = "Ontario",
+                        Twitter = string.Concat(i.ToString(), "Tweets"),
+                        Zip = "123458"
+                    });
+            }
+
         }
     }
 }

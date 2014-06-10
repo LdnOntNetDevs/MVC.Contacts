@@ -1,20 +1,19 @@
-﻿@{
-    ViewBag.Title = "Home Page";
+﻿@model IPagedList<ContactListViewModel>
+
+@{
+    ViewBag.Title = "Contact List";
 }
 
-<div class="jumbotron">
-    <div>
-        <a href="http://www.meetup.com/London-NET-Developers-Group/events/184561392/">
-            <img src="~/Content/Images/dotNETdev_logo_150x150.png" />
-        </a>
 
-    </div>
-    <hr />
-    <div>
-        <p class="lead">
+<form method="get" action="@Url.Action("Index")"
+      data-otf-ajax="true" data-otf-target="#contactList">
 
-            We will meet regularly to explore the use of .NET for building mobile to web applications or just for fun of coding. Our goal is to create a great social group in the London and surrounding area where everyone can come share and learn from each other. We will be learning and coding with a focus on web and multi-platform mobile development, including MonoTouch, Mono for Android, Windows Phone, Windows 8 and ASP.NET.
-        </p>
-    </div>
-</div>
+    <input type="search" name="searchTerm" data-otf-autocomplete="@Url.Action("Autocomplete")" />
+    <input type="submit" value="Search By Name" class="btn btn-info" />
+</form>
 
+<p>
+    @Html.ActionLink("Create New", "Create", "Contacts", null, new { @class = "btn btn-primary btn-sm" })
+</p>
+
+@Html.Partial("_ContactList", Model)

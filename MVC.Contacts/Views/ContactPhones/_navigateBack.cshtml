@@ -10,10 +10,10 @@
 <div>
     @if (editMode)
     {
-        @Html.ActionLink("Back to List", "Edit", "Contacts", new { id = Request["ContactId"] }, new { @class = "btn btn-primary" })
+        @Html.ActionLink("Back", "Edit", "Contacts", new { id = Request["ContactId"] }, new { @class = "btn btn-primary btn-sm" })
     }
     else
     {
-        @Html.ActionLink("Back to List", "Details", "Contacts", new { id = Request["ContactId"] }, new { @class = "btn btn-primary" })
+        @Html.ActionLink("Back", "Details", "Contacts", new { id = Request["ContactId"] }, new { @class = "btn btn-primary btn-sm" })
     }
 </div>
