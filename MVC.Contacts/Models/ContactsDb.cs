@@ -27,29 +27,29 @@ namespace MVC.Contacts.Models
         public DbSet<Contact> Contacts { get; set; }
         public DbSet<ContactPhone> ContactPhones { get; set; }
 
-        public IQueryable<T> Query<T>() where T : class
+        IQueryable<T> IContactsDb.Query<T>()
         {
-            throw new NotImplementedException();
+            return Set<T>();
         }
 
-        public void Add<T>(T entity) where T : class
+        void IContactsDb.Add<T>(T entity)
         {
-            throw new NotImplementedException();
+            Set<T>().Add(entity);
         }
 
-        public void Update<T>(T entity) where T : class
+        void IContactsDb.Update<T>(T entity)
         {
-            throw new NotImplementedException();
+            Entry(entity).State = EntityState.Modified;
         }
 
-        public void Remove<T>(T entity) where T : class
+        void IContactsDb.Remove<T>(T entity)
         {
-            throw new NotImplementedException();
+            Set<T>().Remove(entity);
         }
 
-        public new void SaveChanges()
+        void IContactsDb.SaveChanges()
         {
-            throw new NotImplementedException();
+            SaveChanges();
         }
     }
 }
