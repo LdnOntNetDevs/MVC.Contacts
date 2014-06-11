@@ -11,7 +11,7 @@ $(function () {
         };
 
         $.ajax(options).done(function (data) {
-            var $target = $($form.attr("data-otf-target"));
+            var $target = $($form.attr("data-magic-target"));
             var $newHtml = $(data);
             $target.replaceWith($newHtml);
             $newHtml.effect("highlight");
@@ -33,7 +33,7 @@ $(function () {
         var $input = $(this);
 
         var options = {
-            source: $input.attr("data-otf-autocomplete"),
+            source: $input.attr("data-magic-autocomplete"),
             select: submitAutocompleteForm
         };
 
@@ -50,15 +50,15 @@ $(function () {
         };
 
         $.ajax(options).done(function (data) {
-            var target = $a.parents("div.pagedList").attr("data-otf-target");
+            var target = $a.parents("div.pagedList").attr("data-magic-target");
             $(target).replaceWith(data);
         });
         return false;
 
     };
 
-    $("form[data-otf-ajax='true']").submit(ajaxFormSubmit);
-    $("input[data-otf-autocomplete]").each(createAutocomplete);
+    $("form[data-magic-ajax='true']").submit(ajaxFormSubmit);
+    $("input[data-magic-autocomplete]").each(createAutocomplete);
 
     $(".main-content").on("click", ".pagedList a", getPage);
 

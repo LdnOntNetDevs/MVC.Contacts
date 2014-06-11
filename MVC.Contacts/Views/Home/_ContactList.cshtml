@@ -1,0 +1,66 @@
+﻿@model IPagedList<ContactListViewModel>
+
+<div id="contactList">
+    <table>
+        <tr>
+            <th>
+                @Html.LabelFor(model => model.First().Name)
+            </th>
+            <th>
+                @Html.LabelFor(model => model.First().Address)
+            </th>
+            <th>
+                @Html.LabelFor(model => model.First().City)
+            </th>
+            <th>
+                @Html.LabelFor(model => model.First().State)
+            </th>
+            <th>
+                @Html.LabelFor(model => model.First().Zip)
+            </th>
+            <th>
+               @Html.LabelFor(model => model.First().Email)
+            </th>
+            <th>
+                @Html.LabelFor(model => model.First().Twitter)
+            </th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Address)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.City)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.State)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Zip)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Twitter)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", "Contacts", new { id = item.ContactId }, new { @class = "btn btn-warning btn-sm" }) |
+                    @Html.ActionLink("Details", "Details", "Contacts", new { id = item.ContactId }, new { @class = "btn btn-primary btn-sm" }) |
+                    @Html.ActionLink("Delete", "Delete", "Contacts", new { id = item.ContactId }, new { @class = "btn btn-danger btn-sm" })
+                </td>
+            </tr>
+        }
+
+    </table>
+
+    <div class="pagedList" data-magic-target="#contactList">
+        @Html.PagedListPager(Model, page => Url.Action("Index", new { page }),
+        PagedListRenderOptions.MinimalWithItemCountText)
+    </div>
+</div>
