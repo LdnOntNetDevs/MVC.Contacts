@@ -15,12 +15,6 @@ namespace MVC.Contacts.Controllers
     {
         private ContactsDb db = new ContactsDb();
 
-        // GET: Contacts
-        public async Task<ActionResult> Index()
-        {
-            return View(await db.Contacts.ToListAsync());
-        }
-
         // GET: Contacts/Details/5
         public async Task<ActionResult> Details(int? id)
         {
@@ -53,7 +47,7 @@ namespace MVC.Contacts.Controllers
             {
                 db.Contacts.Add(contact);
                 await db.SaveChangesAsync();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index","Home",null);
             }
 
             return View(contact);
@@ -85,7 +79,7 @@ namespace MVC.Contacts.Controllers
             {
                 db.Entry(contact).State = EntityState.Modified;
                 await db.SaveChangesAsync();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Home", null);
             }
             return View(contact);
         }
@@ -113,7 +107,7 @@ namespace MVC.Contacts.Controllers
             Contact contact = await db.Contacts.FindAsync(id);
             db.Contacts.Remove(contact);
             await db.SaveChangesAsync();
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", "Home", null);
         }
 
         protected override void Dispose(bool disposing)
